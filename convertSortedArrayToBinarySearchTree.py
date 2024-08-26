@@ -9,4 +9,13 @@ class TreeNode:
         
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-        """the median is the root. split the nums everytime, and every median is the root."""
+        if len(nums) == 1:
+            return TreeNode(nums[0])
+        elif len(nums) == 0:
+            return None
+        
+        mid = len(nums) // 2
+        node = TreeNode(nums[mid])
+        node.left = self.sortedArrayToBST(nums[:mid])
+        node.right = self.sortedArrayToBST(nums[mid + 1:])
+        return node

@@ -9,11 +9,11 @@ class TreeNode:
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        
         def check(current, depth):
             if not current:
                 return depth
             left = check(current.left, depth + 1)
             right = check(current.right, depth + 1)
-
+            return max(left, right)
+        
         return check(root, 0)
