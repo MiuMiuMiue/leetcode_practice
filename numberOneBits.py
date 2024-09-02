@@ -1,10 +1,9 @@
 class Solution:
-    def reverseBits(self, n: int) -> int:
+    def hammingWeight(self, n: int) -> int:
         result = 0
 
         for _ in range(32):
-            current = 0x1 & n
-            result = result << 1 | current
+            result += n & 1
             n = n >> 1
         
         return result
