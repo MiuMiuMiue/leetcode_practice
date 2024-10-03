@@ -20,7 +20,31 @@ class Solution:
         
         return result
 
+def test_1(Ans):
+    s = ""
+    k = 2
+    print(Ans.reverseStr(s, k) == "")
+
+def test_2(Ans):
+    s = "a"
+    k = 3
+    print(Ans.reverseStr(s, k) == "a")
+
+def test_3(Ans):
+    s = "abandon"
+    k = 5
+    print(Ans.reverseStr(s, k) == "dnabaon")
+
+def test_4(Ans):
+    s = "abandon"
+    k = 7
+    print(Ans.reverseStr(s, k) == "nodnaba")
 
 if __name__ == "__main__":
     A = Solution()
-    print(A.reverseStr("abcdefg", 3))
+    
+    test_1(A)
+    test_2(A)
+    test_3(A)
+    test_4(A)
+
