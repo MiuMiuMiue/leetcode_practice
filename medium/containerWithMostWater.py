@@ -2,15 +2,14 @@ from typing import List
 
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        l = 0
-        r = len(height) - 1
-        maxContainer = 0
+        i, j = 0, len(height) - 1
+        maxArea = -1
 
-        while l < r:
-            maxContainer = max(min(height[l], height[r]) * (r - l), maxContainer)
-            if height[l] < height[r]:
-                l += 1
+        while i < j:
+            maxArea = max(min(height[i], height[j]) * (j - i), maxArea)
+            if height[i] <= height[j]:
+                i += 1
             else:
-                r -= 1
+                j -= 1
         
-        return maxContainer
+        return maxArea
