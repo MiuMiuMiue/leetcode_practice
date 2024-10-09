@@ -8,12 +8,17 @@ class Solution:
             if i > 0 and nums[i - 1] == nums[i]:
                 continue
             seen = set()
-            j = i + 1
-            while j < len(nums):
-                if 0 - nums[i] - nums[j] in seen:
-                    results.append([nums[i], nums[j], 0 - nums[i] - nums[j]])
-                    while j < len(nums) - 1 and nums[j] == nums[j + 1]:
-                        j += 1
-                seen.add(nums[j])
-                j += 1
+            lo, hi = i + 1, len(nums) - 1
+            while lo < hi:
+                sum = nums[i] + nums[lo] + nums[hi]
+                if sum < 0:
+                    lo += 1
+                elif sum > 0:
+                    hi -= 1
+                else:
+                    results.append([nums[i], nums[lo], nums[hi]])
+                    lo += 1
+                    hi -= 1
+                    while lo < hi and nums[lo] == nums[lo - 1]:
+                        lo += 1
         return results
